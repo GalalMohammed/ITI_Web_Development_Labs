@@ -51,6 +51,7 @@ class QueuePro(Queue):
 
     @classmethod
     def save(cls):
+        QueuePro.load()
         with open("queue.json", 'w') as file:
             file.write(json.dumps(dict([(k, obj.__dict__) for k, obj in cls.__queues.items()])))
 

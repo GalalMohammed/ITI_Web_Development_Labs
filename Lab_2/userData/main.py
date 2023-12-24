@@ -1,3 +1,6 @@
+import re
+
+
 while True:
     name = input("Enter Your Name:")
     f = True
@@ -12,19 +15,9 @@ while True:
         print("Enter a right name")
 while True:
     email = input("Enter Your email:")
+    email = re.findall(r"[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+", email)
+    email = email[0] if email else None
     if email:
-        if not email[0].isalpha():
-            print("Enter a valid email")
-            continue
-        if not email.rfind('.') > 2:
-            print("Enter a valid email")
-            continue
-        if not email.count('@') == 1 or not email.find('@') < email.rfind('.') or not email.rfind('.') - email.find('@') > 1:
-            print("Enter a valid email")
-            continue
-        if email.rfind('.') == len(email) - 1:
-            print("Enter a valid email")
-            continue
         break
     else:
         print("Enter a right email")
